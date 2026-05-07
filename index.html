@@ -586,6 +586,195 @@
     letter-spacing: 0.1em;
   }
 
+  /* ── Demo ── */
+  .demo {
+    padding: 8rem 8%;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .demo-scenarios {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .scenario-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    background: transparent;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .scenario-tag.clickable { cursor: pointer; }
+  .scenario-tag.clickable:hover { border-color: rgba(20,184,166,0.4); color: var(--text-muted); }
+
+  .scenario-tag.active {
+    border-color: var(--teal-light);
+    color: var(--teal-light);
+  }
+
+  .wa-window {
+    max-width: 360px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.07);
+    background: #0b141a;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    margin: 0 auto;
+  }
+
+  .wa-header {
+    background: #1f2c34;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .wa-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .wa-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #e9edef;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .wa-status {
+    font-size: 0.65rem;
+    color: #25d366;
+    font-family: 'Sora', sans-serif;
+  }
+
+  .wa-messages {
+    min-height: 340px;
+    max-height: 340px;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: #0b141a;
+    scroll-behavior: smooth;
+  }
+
+  .wa-messages::-webkit-scrollbar { width: 3px; }
+  .wa-messages::-webkit-scrollbar-track { background: transparent; }
+  .wa-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+  .wa-msg {
+    max-width: 80%;
+    padding: 0.5rem 0.75rem 0.3rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-family: 'Sora', sans-serif;
+    font-weight: 300;
+    animation: msgIn 0.18s ease;
+  }
+
+  .wa-msg.agent {
+    background: #202c33;
+    color: #e9edef;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+  }
+
+  .wa-msg.user {
+    background: #005c4b;
+    color: #e9edef;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+  }
+
+  .wa-msg-time {
+    font-size: 0.58rem;
+    color: #8696a0;
+    text-align: right;
+    margin-top: 0.15rem;
+  }
+
+  .wa-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.65rem 0.875rem;
+    background: #202c33;
+    border-radius: 8px;
+    border-bottom-left-radius: 2px;
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .wa-typing.user {
+    background: #005c4b;
+    align-self: flex-end;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 2px;
+  }
+
+  .wa-typing span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8696a0;
+    animation: typingDot 1.2s infinite;
+  }
+
+  .wa-typing span:nth-child(2) { animation-delay: 0.2s; }
+  .wa-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typingDot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  .wa-input-bar {
+    background: #1f2c34;
+    padding: 0.65rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .wa-input-bar span {
+    flex: 1;
+    font-size: 0.8rem;
+    color: #8696a0;
+    font-family: 'Sora', sans-serif;
+  }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   /* ── Animations ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(14px); }
@@ -603,12 +792,12 @@
   }
 
   @media (max-width: 768px) {
-    .sobre, .orcamento { grid-template-columns: 1fr; gap: 3rem; }
+    .sobre, .orcamento, .demo { grid-template-columns: 1fr; gap: 3rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .contact-grid { max-width: 100%; }
-    .sobre, .servicos, .como-funciona, .contato, .orcamento { padding: 5rem 6%; }
+    .sobre, .servicos, .como-funciona, .demo, .contato, .orcamento { padding: 5rem 6%; }
   }
 
   @media (max-width: 480px) {
@@ -842,6 +1031,41 @@
   </div>
 </section>
 
+<section class="demo" id="demo">
+  <div class="demo-text">
+    <div class="section-label">veja na prática</div>
+    <h2 class="section-title">O agente em ação</h2>
+    <p class="section-desc">Este é um exemplo de como desenvolvemos assistentes próprios para o seu negócio.</p>
+    <div class="demo-scenarios">
+      <span class="scenario-tag active clickable" data-scenario="ecommerce">E-commerce</span>
+<span class="scenario-tag clickable" data-scenario="suporte">Suporte</span>
+      <span class="scenario-tag clickable" data-scenario="saude">Saúde</span>
+      <span class="scenario-tag clickable" data-scenario="financeiro">Financeiro</span>
+    </div>
+  </div>
+  <div class="wa-window">
+    <div class="wa-header">
+      <div class="wa-avatar">M</div>
+      <div>
+        <div class="wa-name" id="wa-agent-name">Assistente • Loja Virtual</div>
+        <div class="wa-status">online</div>
+      </div>
+    </div>
+    <div class="wa-messages" id="wa-messages"></div>
+    <div class="wa-input-bar">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.4">
+        <circle cx="10" cy="10" r="8.5" stroke="#8696a0" stroke-width="1"/>
+        <path d="M7 10.5c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3" stroke="#8696a0" stroke-width="1" stroke-linecap="round"/>
+        <circle cx="10" cy="6" r="1" fill="#8696a0"/>
+      </svg>
+      <span>Digite uma mensagem</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.4">
+        <path d="M17 10L3 4l3 6-3 6 14-6z" stroke="#8696a0" stroke-width="1" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
 <section class="como-funciona" id="como-funciona">
   <div class="cf-header">
     <div class="section-label">como funciona</div>
@@ -1018,6 +1242,142 @@ function draw() {
 
 resize(); seed(); draw();
 window.addEventListener('resize', () => { resize(); seed(); draw(); });
+
+// WhatsApp demo animation
+const conversations = {
+  ecommerce: {
+    agent: 'Assistente • Loja Virtual',
+    messages: [
+      { side: 'user',  text: 'Oi! Vocês têm o Nike Air Force 1 no 41?',               time: '15:10' },
+      { side: 'agent', text: 'Olá! 👟 Temos o Air Force 1 no 41 em branco e preto. Qual você prefere?', time: '15:10', delay: 1600 },
+      { side: 'user',  text: 'Branco. Quanto custa?',                                  time: '15:11' },
+      { side: 'agent', text: 'O Air Force 1 branco está por R$ 599,90. Frete grátis para compras acima de R$ 500! 🚚', time: '15:11', delay: 1700 },
+      { side: 'user',  text: 'Tem desconto no PIX?',                                   time: '15:11' },
+      { side: 'agent', text: 'Tem sim! No PIX sai por R$ 551,90 com 8% de desconto. Quer finalizar?', time: '15:12', delay: 1600 },
+      { side: 'user',  text: 'Sim!',                                                   time: '15:12' },
+      { side: 'agent', text: 'Ótimo! 🎉 Vou gerar o QR Code agora. Qual é o seu CEP para calcular o frete?', time: '15:12', delay: 1500 },
+    ]
+  },
+  suporte: {
+    agent: 'Assistente • Suporte Técnico',
+    messages: [
+      { side: 'user',  text: 'Oi! Minha lava e seca não está centrifugando.',          time: '09:10' },
+      { side: 'agent', text: 'Olá! Vou te ajudar. 🔧 Qual é o modelo do seu aparelho?', time: '09:10', delay: 1500 },
+      { side: 'user',  text: 'Samsung WD11T.',                                          time: '09:11' },
+      { side: 'agent', text: 'Na WD11T isso costuma acontecer por desequilíbrio na cesta. Você pode tentar redistribuir as roupas e rodar novamente. O problema continua?', time: '09:11', delay: 2200 },
+      { side: 'user',  text: 'Sim, continua do mesmo jeito.',                           time: '09:12' },
+      { side: 'agent', text: 'Entendido. Vou agendar uma visita técnica. Qual é a sua disponibilidade esta semana?', time: '09:12', delay: 1800 },
+      { side: 'user',  text: 'Quinta ou sexta de manhã.',                               time: '09:12' },
+      { side: 'agent', text: 'Agendado para quinta-feira às 9h! Você receberá a confirmação por SMS e nosso técnico entrará em contato antes de chegar. 😊', time: '09:13', delay: 1900 },
+    ]
+  },
+  financeiro: {
+    agent: 'Assistente • Banco Digital',
+    messages: [
+      { side: 'user',  text: 'Oi! Quero simular um empréstimo de R$ 5.000.',           time: '16:20' },
+      { side: 'agent', text: 'Olá! 💰 Você é correntista conosco?',                   time: '16:20', delay: 1400 },
+      { side: 'user',  text: 'Sim, tenho conta há 2 anos.',                            time: '16:21' },
+      { side: 'agent', text: 'Ótimo! Consultei seu perfil e você tem pré-aprovação de até R$ 8.000. Para R$ 5.000, posso parcelar em até 24x. Em quantas parcelas quer simular?', time: '16:21', delay: 2200 },
+      { side: 'user',  text: 'Em 12x.',                                                time: '16:21' },
+      { side: 'agent', text: 'Em 12x, a parcela seria de R$ 468,50 com taxa de 1,89% ao mês. Total: R$ 5.622,00. Deseja contratar?', time: '16:22', delay: 1900 },
+      { side: 'user',  text: 'Sim, pode contratar.',                                   time: '16:22' },
+      { side: 'agent', text: 'Contratado! ✅ Em até 2 horas o valor de R$ 5.000 será creditado na sua conta. Você receberá o comprovante por e-mail. 😊', time: '16:22', delay: 2000 },
+    ]
+  },
+  saude: {
+    agent: 'Assistente • Clínica Saúde+',
+    messages: [
+      { side: 'user',  text: 'Oi! Preciso marcar uma consulta com cardiologista.',     time: '11:05' },
+      { side: 'agent', text: 'Olá! 🩺 Temos cardiologistas disponíveis. A consulta é particular ou por plano de saúde?', time: '11:05', delay: 1600 },
+      { side: 'user',  text: 'Por plano, Unimed.',                                     time: '11:06' },
+      { side: 'agent', text: 'Certo! Temos dois cardiologistas que atendem Unimed: Dr. Rafael Souza e Dra. Camila Torres. Alguma preferência?', time: '11:06', delay: 1800 },
+      { side: 'user',  text: 'Dra. Camila. Tem vaga essa semana?',                     time: '11:06' },
+      { side: 'agent', text: 'Tem sim! Ela tem horários disponíveis na quarta às 14h ou na sexta às 10h. Qual prefere?', time: '11:07', delay: 1700 },
+      { side: 'user',  text: 'Quarta às 14h.',                                         time: '11:07' },
+      { side: 'agent', text: 'Consulta agendada! ✅ Dra. Camila Torres, quarta-feira às 14h. Você receberá a confirmação por SMS. Lembre-se de trazer seus exames anteriores. 😊', time: '11:07', delay: 2000 },
+    ]
+  }
+};
+
+const container  = document.getElementById('wa-messages');
+const agentName  = document.getElementById('wa-agent-name');
+const inputLabel = document.querySelector('.wa-input-bar span');
+let currentKey   = 'ecommerce';
+let step         = 0;
+let timer        = null;
+
+function addMessage(msg) {
+  const el = document.createElement('div');
+  el.className = 'wa-msg ' + msg.side;
+  el.innerHTML = msg.text + '<div class="wa-msg-time">' + msg.time + '</div>';
+  container.appendChild(el);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping() {
+  const el = document.createElement('div');
+  el.className = 'wa-typing';
+  el.id = 'wa-typing';
+  el.innerHTML = '<span></span><span></span><span></span>';
+  container.appendChild(el);
+  container.scrollTop = container.scrollHeight;
+  if (inputLabel) inputLabel.textContent = 'digitando...';
+}
+
+function removeTyping() {
+  const el = document.getElementById('wa-typing');
+  if (el) el.remove();
+  if (inputLabel) inputLabel.textContent = 'Digite uma mensagem';
+}
+
+function showUserTyping() {
+  const el = document.createElement('div');
+  el.className = 'wa-typing user';
+  el.id = 'wa-typing';
+  el.innerHTML = '<span></span><span></span><span></span>';
+  container.appendChild(el);
+  container.scrollTop = container.scrollHeight;
+}
+
+function nextStep() {
+  const msgs = conversations[currentKey].messages;
+  if (step >= msgs.length) {
+    timer = setTimeout(() => { container.innerHTML = ''; step = 0; nextStep(); }, 3000);
+    return;
+  }
+  const msg = msgs[step];
+  step++;
+  if (msg.side === 'agent') {
+    showTyping();
+    timer = setTimeout(() => { removeTyping(); addMessage(msg); scheduleNext(msg.side); }, (msg.delay || 1500) * 1.6 + 1000);
+  } else {
+    showUserTyping();
+    timer = setTimeout(() => { removeTyping(); addMessage(msg); scheduleNext(msg.side); }, 2400);
+  }
+}
+
+function scheduleNext(side) {
+  timer = setTimeout(nextStep, side === 'agent' ? 2500 : 1500);
+}
+
+function switchScenario(key) {
+  clearTimeout(timer);
+  removeTyping();
+  container.innerHTML = '';
+  currentKey = key;
+  step = 0;
+  if (agentName) agentName.textContent = conversations[key].agent;
+  document.querySelectorAll('.scenario-tag').forEach(t => {
+    t.classList.toggle('active', t.dataset.scenario === key);
+  });
+  nextStep();
+}
+
+document.querySelectorAll('.scenario-tag.clickable').forEach(tag => {
+  tag.addEventListener('click', () => switchScenario(tag.dataset.scenario));
+});
+
+nextStep();
 </script>
 </body>
 </html>
