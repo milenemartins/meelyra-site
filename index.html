@@ -3,7 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meelyra AI</title>
+<title>Meelyra AI — Inteligência Artificial sob medida</title>
+<meta name="description" content="A Meelyra AI desenvolve agentes de inteligência artificial sob medida para o seu negócio: atendimento, vendas e automação no WhatsApp, e-commerce e além.">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meelyra.com.br">
+<meta property="og:title" content="Meelyra AI — Inteligência Artificial sob medida">
+<meta property="og:description" content="Desenvolvemos agentes de IA que operam onde o seu cliente estiver: WhatsApp, e-commerce, app ou qualquer interface.">
+<meta property="og:image" content="https://meelyra.com.br/assets/img/Logo-Meelyra-dark.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Meelyra AI — Inteligência Artificial sob medida">
+<meta name="twitter:description" content="Desenvolvemos agentes de IA que operam onde o seu cliente estiver: WhatsApp, e-commerce, app ou qualquer interface.">
+<meta name="twitter:image" content="https://meelyra.com.br/assets/img/Logo-Meelyra-dark.png">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   @font-face {
@@ -483,47 +500,57 @@
     border-top: 1px solid var(--border);
   }
 
-  .cf-header { margin-bottom: 4.5rem; }
+  .cf-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
 
   .steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
+    gap: 2rem;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 12.5%;
+    right: 12.5%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    opacity: 0.35;
   }
 
   .step {
-    background: var(--bg2);
-    padding: 2.5rem;
-    transition: background 0.25s;
+    text-align: center;
+    transition: transform 0.2s;
   }
 
-  .step:hover { background: var(--bg3); }
+  .step:hover { transform: scale(1.04); }
+  .step:hover .step-num { border-color: var(--teal-light); }
 
-  .step-index {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--teal-light);
-    letter-spacing: 0.15em;
-    margin-bottom: 2rem;
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    opacity: 0.7;
-  }
-
-  .step-index::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(59,130,246,0.3), transparent);
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal-light);
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.2s;
   }
 
   .step h4 {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 500;
     margin-bottom: 0.75rem;
     color: var(--text);
@@ -991,7 +1018,7 @@
   <div class="hero-content">
     <div class="hero-brand">Inteligência Artificial sob medida</div>
     <h1>IA que resolve<br><span class="accent">problemas reais</span><br>no seu negócio</h1>
-    <p class="hero-sub">Não é um chatbot genérico. É inteligência artificial construída para o seu negócio: atende, vende e aprende no WhatsApp, e-commerce e além.</p>
+    <p class="hero-sub">Do diagnóstico ao deploy, desenvolvemos agentes que operam onde o seu cliente estiver: WhatsApp, e-commerce, app ou qualquer interface.</p>
     <div class="hero-btns">
       <a href="#orcamento" class="btn-primary">Quero um orçamento</a>
       <a href="#servicos" class="btn-secondary">Ver o que fazemos</a>
@@ -1058,14 +1085,14 @@
       <div class="stat-label">sob medida para o seu negócio</div>
     </div>
     <div class="stat">
-      <div class="stat-num">E2E</div>
+      <div class="stat-num">0→1</div>
       <div class="stat-rule"></div>
-      <div class="stat-label">do modelo ao deploy</div>
+      <div class="stat-label">do problema ao funcionando</div>
     </div>
     <div class="stat">
-      <div class="stat-num">LLM</div>
+      <div class="stat-num">Multi</div>
       <div class="stat-rule"></div>
-      <div class="stat-label">modelos próprios e consolidados</div>
+      <div class="stat-label">canais e sistemas integrados</div>
     </div>
     <div class="stat">
       <div class="stat-num">24/7</div>
@@ -1224,22 +1251,22 @@
   </div>
   <div class="steps">
     <div class="step">
-      <div class="step-index">01</div>
+      <div class="step-num">01</div>
       <h4>Diagnóstico</h4>
       <p>Entendemos o seu negócio, os dados disponíveis e o problema real a ser resolvido.</p>
     </div>
     <div class="step">
-      <div class="step-index">02</div>
+      <div class="step-num">02</div>
       <h4>Arquitetura</h4>
       <p>Desenhamos a solução mais adequada: agente, modelo ou integração.</p>
     </div>
     <div class="step">
-      <div class="step-index">03</div>
+      <div class="step-num">03</div>
       <h4>Desenvolvimento</h4>
       <p>Construímos, testamos e refinamos até a solução estar pronta para o mundo real.</p>
     </div>
     <div class="step">
-      <div class="step-index">04</div>
+      <div class="step-num">04</div>
       <h4>Operação</h4>
       <p>Acompanhamos a solução em produção, evoluindo conforme o negócio cresce.</p>
     </div>
