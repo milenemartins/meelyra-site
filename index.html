@@ -79,7 +79,7 @@
     background: rgba(5,13,26,0.82);
   }
 
-  .nav-logo { display: flex; align-items: center; }
+  .nav-logo { display: flex; align-items: center; margin-left: -50px; }
 
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
@@ -90,9 +90,23 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: color 0.2s;
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: rgba(47,166,158,0.6);
+    transition: width 0.3s ease;
   }
 
   .nav-links a:hover { color: var(--text-muted); }
+  .nav-links a:hover::after { width: 100%; }
 
   .nav-cta {
     background: transparent;
@@ -253,6 +267,95 @@
     line-height: 1.85;
     max-width: 520px;
     font-weight: 300;
+  }
+
+  /* ── Chatbot vs Agente ── */
+  .vs-section {
+    padding: 7rem 8%;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .vs-section .section-label { justify-content: center; display: flex; }
+
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-top: 3.5rem;
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .vs-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+  }
+
+  .vs-card.agent { border-color: rgba(47,166,158,0.35); }
+
+  .vs-card-header {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .vs-card.agent .vs-card-header { border-bottom-color: rgba(47,166,158,0.2); background: rgba(47,166,158,0.04); }
+
+  .vs-card-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .vs-card.chatbot .vs-card-title { color: var(--text-dim); }
+  .vs-card.agent .vs-card-title { color: var(--teal-light); }
+
+  .vs-card-body { padding: 1.5rem 1.75rem; background: var(--bg2); }
+  .vs-card.agent .vs-card-body { background: rgba(47,166,158,0.03); }
+
+  .vs-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .vs-item:last-child { border-bottom: none; }
+
+  .vs-card.chatbot .vs-item { color: var(--text-dim); }
+  .vs-card.agent .vs-item { color: var(--text-muted); }
+
+  .vs-icon {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .vs-card.chatbot .vs-icon { color: #4a6d8c; }
+  .vs-card.agent .vs-icon { color: var(--teal-light); }
+
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
   }
 
   /* ── Sobre ── */
@@ -792,9 +895,12 @@
   }
 
   @media (max-width: 768px) {
+    .vs-grid { grid-template-columns: 1fr; }
+    .vs-divider { padding-top: 0; padding-bottom: 0; }
     .sobre, .orcamento, .demo { grid-template-columns: 1fr; gap: 3rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    nav { padding: 0 4%; }
     footer { flex-direction: column; gap: 1rem; text-align: center; }
     .contact-grid { max-width: 100%; }
     .sobre, .servicos, .como-funciona, .demo, .contato, .orcamento { padding: 5rem 6%; }
@@ -816,9 +922,9 @@
     <a href="#"><img src="assets/img/Logo-Meelyra-Logo-Meelyra-dark-fundo-transparente.png" alt="Meelyra AI" style="height:150px;width:auto;"></a>
   </div>
   <ul class="nav-links">
-    <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#demo">Demo</a></li>
+    <li><a href="#contato">Contato</a></li>
   </ul>
   <a href="#contato" class="nav-cta">Contato</a>
 </nav>
@@ -888,6 +994,50 @@
     <div class="hero-btns">
       <a href="#orcamento" class="btn-primary">Quero um orçamento</a>
       <a href="#servicos" class="btn-secondary">Ver o que fazemos</a>
+    </div>
+  </div>
+</section>
+
+<section class="vs-section">
+  <div class="section-label">por que não é um chatbot</div>
+  <h2 class="section-title" style="margin-top:1rem;">A diferença que muda tudo</h2>
+
+  <div class="vs-grid">
+    <div class="vs-card chatbot">
+      <div class="vs-card-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2" stroke="#4a6d8c" stroke-width="1"/>
+          <line x1="4" y1="4" x2="10" y2="10" stroke="#4a6d8c" stroke-width="1" stroke-linecap="round"/>
+          <line x1="10" y1="4" x2="4" y2="10" stroke="#4a6d8c" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <span class="vs-card-title">Chatbot comum</span>
+      </div>
+      <div class="vs-card-body">
+        <div class="vs-item"><span class="vs-icon">—</span>Respostas fixas e pré-programadas</div>
+        <div class="vs-item"><span class="vs-icon">—</span>Segue um roteiro rígido</div>
+        <div class="vs-item"><span class="vs-icon">—</span>Não entende contexto</div>
+        <div class="vs-item"><span class="vs-icon">—</span>Respostas robóticas e impessoais</div>
+        <div class="vs-item"><span class="vs-icon">—</span>Para quando não sabe a resposta</div>
+      </div>
+    </div>
+
+    <div class="vs-divider">vs</div>
+
+    <div class="vs-card agent">
+      <div class="vs-card-header">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <rect x="1" y="1" width="12" height="12" rx="2" stroke="#14b8a6" stroke-width="1"/>
+          <path d="M3.5 7l2.5 2.5 4.5-5" stroke="#14b8a6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="vs-card-title">Agente IA</span>
+      </div>
+      <div class="vs-card-body">
+        <div class="vs-item"><span class="vs-icon">+</span>Raciocina e decide em tempo real</div>
+        <div class="vs-item"><span class="vs-icon">+</span>Adapta-se a qualquer conversa</div>
+        <div class="vs-item"><span class="vs-icon">+</span>Entende contexto e intenção</div>
+        <div class="vs-item"><span class="vs-icon">+</span>Respostas mais humanizadas</div>
+        <div class="vs-item"><span class="vs-icon">+</span>Resolve, escala e aprende sozinho</div>
+      </div>
     </div>
   </div>
 </section>
