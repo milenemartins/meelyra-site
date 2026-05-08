@@ -1324,24 +1324,24 @@
     <h2 class="section-title">Vamos resolver<br>o seu problema?</h2>
     <p class="section-desc">Conta para a gente o que você precisa. A gente analisa e te diz como a IA pode ajudar, sem enrolação.</p>
   </div>
-  <div>
+  <form action="https://formspree.io/f/xlgzwpjv" method="POST">
     <div class="form-row">
       <div class="form-group">
         <label>Nome</label>
-        <input type="text" placeholder="Seu nome">
+        <input type="text" name="nome" placeholder="Seu nome" required>
       </div>
       <div class="form-group">
         <label>Empresa</label>
-        <input type="text" placeholder="Nome da empresa">
+        <input type="text" name="empresa" placeholder="Nome da empresa">
       </div>
     </div>
     <div class="form-group">
       <label>Email</label>
-      <input type="email" placeholder="seu@email.com">
+      <input type="email" name="email" placeholder="seu@email.com" required>
     </div>
     <div class="form-group">
       <label>Segmento</label>
-      <select>
+      <select name="segmento">
         <option value="" disabled selected>Selecione o segmento</option>
         <option>E-commerce / Varejo</option>
         <option>Financeiro / Bancário</option>
@@ -1353,10 +1353,10 @@
     </div>
     <div class="form-group">
       <label>Como podemos ajudar?</label>
-      <textarea placeholder="Descreva o problema ou o que você precisa automatizar..."></textarea>
+      <textarea name="mensagem" placeholder="Descreva o problema ou o que você precisa automatizar..."></textarea>
     </div>
-    <button class="btn-submit">Enviar mensagem</button>
-  </div>
+    <button type="submit" class="btn-submit">Enviar mensagem</button>
+  </form>
 </section>
 
 <footer>
